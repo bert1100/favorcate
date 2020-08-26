@@ -4,12 +4,14 @@ import 'config.dart';
 
 class GLDounbanRequest {
   static Future<List<MovieItem>> requestMovieList(int start) async {
-    final movieUrl = 'https://douban-api.uieee.com/v2/movie/top250?start=$start&count=${DoubanConfig.MOVIE_COUNT}';
+    final movieUrl = 'http://t.yushu.im/v2/movie/top250?start=$start&count=${DoubanConfig.MOVIE_COUNT}';
+//    以下失效
+//    final movieUrl = 'http://douban-api.uieee.com/v2/movie/top250?start=$start&count=${DoubanConfig.MOVIE_COUNT}';
 
     final response = await HttpRequest.request(movieUrl);
-    final subjects = response['subjects'];
 
     List<MovieItem> movies = [];
+    final subjects = response != null ? response['subjects'] as List<dynamic> : [];
     for(var sub in subjects){
       movies.add(MovieItem.fromMap(sub));
     }

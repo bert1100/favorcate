@@ -74,7 +74,23 @@ class GLDounbanMovieItem extends StatelessWidget {
   Widget buildContentImage() {
     return ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: Image.network(movie.imageUrl, height: 150,)
+        child:
+//        Image.network(
+//          movie.imageUrl,
+//          width: 106,
+//          height: 150,
+//          fit: BoxFit.cover,
+//          errorBuilder: (ctx, err, stack) {
+//            return Image.asset('assets/images/douban/pht_yzi_zhuce@2x.png', width: 106, height: 150, fit: BoxFit.cover,);
+//          },
+//        )
+          FadeInImage.assetNetwork(
+            placeholder: 'assets/images/douban/pht_yzi_zhuce@2x.png',
+            image: movie.imageUrl,
+            width: 106,
+            height: 150,
+            fit: BoxFit.cover,
+          )
     );
   }
 

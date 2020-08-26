@@ -4,7 +4,7 @@ class Person {
 
   Person.fromMap(Map<String, dynamic> json) {
     this.name = json['name'];
-    this.avatarUrl = json['avatars']['medium'];
+    this.avatarUrl = json['avatars']['large'] ?? '';
   }
 }
 
@@ -31,9 +31,9 @@ class MovieItem {
 
   MovieItem.fromMap(Map<String, dynamic> json) {
     this.rank = counter ++;
-    this.imageUrl = json["images"]["medium"];
+    this.imageUrl = json["images"]["large"];
     this.title = json["title"];
-    this.playDate = json["year"];
+    this.playDate = json["year"].toString();
     this.rating = json["rating"]["average"];
     this.genres = json["genres"].cast<String>();
     this.casts = (json["casts"] as List<dynamic>).map((item) {

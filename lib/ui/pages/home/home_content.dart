@@ -5,7 +5,12 @@ import 'package:favorcate/ui/pages/home/home_category_item.dart';
 
 import 'package:flutter/material.dart';
 
-class GLHomeContent extends StatelessWidget {
+class GLHomeContent extends StatefulWidget {
+  @override
+  _GLHomeContentState createState() => _GLHomeContentState();
+}
+
+class _GLHomeContentState extends State<GLHomeContent> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<GLCategoryModel>>(

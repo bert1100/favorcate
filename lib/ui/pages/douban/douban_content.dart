@@ -9,25 +9,29 @@ class GLDoubanContent extends StatefulWidget {
 }
 
 class _GLDoubanContentState extends State<GLDoubanContent> {
-  final List<MovieItem> movies = [];
-
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-
-    GLDounbanRequest.requestMovieList(0).then((res) {
-      setState(() {
-        movies.addAll(res);
-      });
-    });
+    print('豆瓣初始化');
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: movies.length,
-      itemBuilder: (ctx, index) {
-        return GLDounbanMovieItem(movies[index]);
-    });
+    return FutureBuilder(
+      future: GLDounbanRequest.requestMovieList(0),
+      builder: (ctx, snapshot) {
+        if(snapshot.hasError) return Center(child: Text('请求失败'),);
+        if(!snapshot.hasData) return Center(child: CircularProgressIndicator(),);
+
+        final List<MovieItem> movies = snapshot.data;
+        return ListView.builder(
+          itemCount: movies.length,
+          itemBuilder: (ctx, index) {
+            return GLDounbanMovieItem(movies[index]);
+          }
+        );
+      },
+    );
   }
 }
