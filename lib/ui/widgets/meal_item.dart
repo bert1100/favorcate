@@ -40,8 +40,9 @@ class GLMealItem extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(cardRadius),
                 topRight: Radius.circular(cardRadius)),
-            child: Image.network(
-              _meal.imageUrl,
+            child: FadeInImage.assetNetwork(
+              placeholder: 'assets/images/douban/pht_yzi_zhuce@2x.png',
+              image: _meal.imageUrl,
               width: double.infinity,
               height: 250.px,
               fit: BoxFit.cover,
