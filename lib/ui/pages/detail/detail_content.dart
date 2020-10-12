@@ -17,6 +17,7 @@ class GLDetailContent extends StatelessWidget {
           buildMakeMaterial(context),
           buildTitle(context, '步骤'),
           buildMakeSteps(context),
+          SizedBox(height: 20,)
         ],
       ),
     );

@@ -8,7 +8,7 @@ class GLDoubanContent extends StatefulWidget {
   _GLDoubanContentState createState() => _GLDoubanContentState();
 }
 
-class _GLDoubanContentState extends State<GLDoubanContent> {
+class _GLDoubanContentState extends State<GLDoubanContent> with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     // TODO: implement initState
@@ -17,7 +17,12 @@ class _GLDoubanContentState extends State<GLDoubanContent> {
   }
 
   @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
       future: GLDounbanRequest.requestMovieList(0),
       builder: (ctx, snapshot) {

@@ -40,7 +40,7 @@ class HttpRequest {
     try {
       Response response = await dio.request(url, queryParameters: params, options: options);
       print('--- url: $url ---');
-      print(response.data);
+//      print(response.data);
       return response.data;
     } on DioError catch(e) {
       print(e.request.path);
