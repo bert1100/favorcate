@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:favorcate/core/extension/num_extension.dart';
 import 'package:favorcate/core/model/meal_model.dart';
 import 'package:favorcate/core/viewmodel/favor_view_model.dart';
@@ -41,13 +42,20 @@ class GLMealItem extends StatelessWidget {
                 topLeft: Radius.circular(cardRadius),
                 topRight: Radius.circular(cardRadius)),
             child:
-              FadeInImage.assetNetwork(
-                placeholder: 'assets/images/douban/pht_yzi_zhuce@2x.png',
-                image: _meal.imageUrl,
+              CachedNetworkImage(
+                imageUrl: _meal.imageUrl,
+                placeholder: (ctx, url) => Image.asset('assets/images/douban/pht_yzi_zhuce@2x.png'),
                 width: double.infinity,
                 height: 250.px,
                 fit: BoxFit.cover,
               )
+//              FadeInImage.assetNetwork(
+//                placeholder: 'assets/images/douban/pht_yzi_zhuce@2x.png',
+//                image: _meal.imageUrl,
+//                width: double.infinity,
+//                height: 250.px,
+//                fit: BoxFit.cover,
+//              )
 //            Image.asset(
 //              'assets/images/douban/pht_yzi_zhuce@2x.png',
 //              height: 250.px,
